@@ -42,7 +42,7 @@ function getUserIp() {
 
 if (!empty($config['ip']) and !empty($config['queryport']) and !empty($config['serverport']) and !empty($config['loginname']) and !empty($config['qpassword']) and !empty($config['displayname'])) {
  	try {
-     	$ts3 = TeamSpeak3::factory('serverquery://'.$config['loginname'].':'.$config['qpassword'].'@'.$config['ip'].':'.$config['queryport'].'?server_port='.$config['serverport'].'&nickname='.$config['displayname']);
+     	$ts3 = TeamSpeak3::factory('serverquery://'.rawurlencode($config['loginname']).':'.rawurlencode($config['qpassword']).'@'.rawurlencode($config['ip']).':'.rawurlencode($config['queryport']).'?server_port='.rawurlencode($config['serverport']).'&nickname='.rawurlencode($config['displayname']));
  	} catch (TeamSpeak3_Exception $e) {
      	exit($e);
  	}
