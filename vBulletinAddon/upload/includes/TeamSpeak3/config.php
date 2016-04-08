@@ -4,7 +4,7 @@
     $config['queryport'] = '10011'; //Query port (Default = 10011)
     $config['serverport'] = '9987'; //Instance port, (Default = 9987)
     $config['loginname'] = 'serveradmin'; //Query loginname
-    $config['password'] = 'Tyc00n'; //Query password        
+    $config['password'] = '******'; //Query password        
     $config['displayname'] = "MxG Bot"; //Bot nickanme
 
     //General settings
