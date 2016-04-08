@@ -13,7 +13,7 @@ $vbUserInfo = $vbulletin->db->query_first("SELECT * FROM ". TABLE_PREFIX ."user 
 
 foreach ($ts3->clientList() as $ts3_Client) {
 	if ($ts3_Client["client_type"] == 0 && $ts3_Client["connection_client_ip"] == $_SERVER['REMOTE_ADDR']) {
-		if(strcasecmp($ts3_Client["client_nickname"], $vbUserInfo['username'])){
+		if(strcasecmp($ts3_Client["client_nickname"], $vbUserInfo['username']) !== 0){
 			if ($config['send_enable'] == true) {
  				switch ($config['send_method']) {
  					case 'text':
