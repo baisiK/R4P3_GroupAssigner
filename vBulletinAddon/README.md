@@ -7,7 +7,12 @@ Copy contents of upload into your vbulltin root directory.
 Edit file includes/Teamspeak3/config.php with your teamspeak settings
 
 How to use:
-create an account on your vbulltin forum.
-connect to teamspeak
-click the link
-you should have ranks
+Create an account on your vbulltin forum.
+
+Connect to teamspeak
+
+Click the link
+
+Accept the rules
+
+You should have ranks
