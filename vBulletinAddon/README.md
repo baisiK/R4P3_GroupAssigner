@@ -7,7 +7,7 @@ Copy contents of upload into your vbulltin root directory.
 Edit file includes/Teamspeak3/config.php with your teamspeak settings
 
 How to use:
-Create an account on your vbulltin forum.
+Create an account on your vbulletin forum.
 
 Connect to teamspeak
 
