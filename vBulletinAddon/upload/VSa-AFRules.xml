@@ -25,8 +25,9 @@
 	$vbulletin->db->query_write("
 		INSERT INTO `". TABLE_PREFIX ."vsa_frules`
 		(id, name, rules)
-		VALUES (1, 'General Rules', '[LIST=1][*][b]All posts must be written in English.[/b][*][color=red]Don\'t spam/abuse any other member via e-mail or Private Messages.[/color][/LIST]')
-	");
+		VALUES (1, 'Forum Rules', '[LIST=1][*][b]All posts must be written in English.[/b][*][color=red]Don\'t spam/abuse any other member via e-mail or Private Messages.[/color][/LIST]')
+		VALUES (2, 'TeamSpeak Rules', '[LIST=1][*][b]Our TeamSpeak is English-speaking.[/b][*][color=red]The use of voice changers, soundboards, or any other modified sound is not allowed and offenders will be banned.[/color][/LIST]')
+		");
  	$vbulletin->db->query_write("ALTER TABLE `" . TABLE_PREFIX . "forum` ADD vsa_frules SMALLINT(3) DEFAULT '1' NOT NULL");
 	echo "<br /><center>Rebuilding Forum Permissions...</center>";
 	vbflush();
@@ -1000,7 +1001,7 @@
 			</vb:if>
 
 			<vb:if condition="($vsafr_showaccform)">
-				<form action="tsgroupassign.php?{vb:raw session.sessionurl}do=vsaafragree" name="agree_vsaafr" id="agree_vsaafr" method="post" onsubmit="return VSaFR_checkAgree();">
+				<form action="misc.php?{vb:raw session.sessionurl}do=vsaafragree" name="agree_vsaafr" id="agree_vsaafr" method="post" onsubmit="return VSaFR_checkAgree();">
 				<input type="hidden" name="securitytoken" value="{vb:raw bbuserinfo.securitytoken}" />
 				<input type="hidden" name="cfrset" value="{vb:raw vsafr_rulestoaccept}" />
 
