@@ -3,6 +3,7 @@ require_once('./global.php');
 require_once('includes/TeamSpeak3/config.php');
 require_once('includes/TeamSpeak3/TeamSpeak3.php');
 
+var_dump($vbulletin->userinfo);
 if ($vbulletin->options['vsafrules_enable_global'])
 {
 	require_once(DIR . '/includes/class_bbcode.php');
@@ -116,35 +117,28 @@ if ($vbulletin->options['vsafrules_enable_global'])
 	
 			foreach ($ts3->clientList() as $ts3_Client) {
 				if ($ts3_Client["client_type"] == 0 && $ts3_Client["connection_client_ip"] == $_SERVER['REMOTE_ADDR']) {
-					if(strcasecmp($ts3_Client["client_nickname"], $vbulletin->userinfo['username']) !== 0){
-						if ($config['send_enable'] == true) {
-			 				switch ($config['send_method']) {
-			 					case 'text':
-			 						$ts3_Client->message($config['send_message_invalid_username']);
-			 						break;
-			 					case 'poke':
-			 						$ts3_Client->poke($config['send_message_invalid_username']);
-			 						break;
-			 					default;
-			 						break;
-			 				}
+					if(strcasecmp($ts3_Client["client_nickname"], $vbulletin->userinfo['username']) !== 0)
+					{
+						if ($config['send_enable'] == true) 
+						{
+			 				$ts3_Client->message($config['send_message_invalid_username']);
 			 			}
+			 			exit();
+					}
+					else if($vbulletin->userinfo['displaygroupid'] === $config['awaiting_email_confirmation_group'])
+					{
+						if ($config['send_enable'] == true) 
+						{
+							$ts3_Client->message($config['send_message_email_confirmation']);
+						}
 			 			exit();
 					}
 					foreach ($config['groups'] as $group) {
 						try {
 							$ts3_Client->serverGroupClientAdd($group, $ts3_Client->client_database_id);
-			 				if ($config['send_enable'] == true) {
-			 					switch ($config['send_method']) {
-			 						case 'text':
-			 							$ts3_Client->message($config['send_message_success'].$ts3->serverGroupGetById($group));
-			 							break;
-			 						case 'poke':
-			 							$ts3_Client->poke($config['send_message_success'].$ts3->serverGroupGetById($group));
-			 							break;
-			 						default;
-			 							break;
-			 					}
+			 				if ($config['send_enable'] == true) 
+			 				{
+			 					$ts3_Client->message($config['send_message_success'].$ts3->serverGroupGetById($group));
 			 				}
 			     	    } catch (Exception $e) {}
 			        }
