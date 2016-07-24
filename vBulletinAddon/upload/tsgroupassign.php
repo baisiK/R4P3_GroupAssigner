@@ -3,7 +3,6 @@ require_once('./global.php');
 require_once('includes/TeamSpeak3/config.php');
 require_once('includes/TeamSpeak3/TeamSpeak3.php');
 
-var_dump($vbulletin->userinfo);
 if ($vbulletin->options['vsafrules_enable_global'])
 {
 	require_once(DIR . '/includes/class_bbcode.php');
