@@ -5,7 +5,7 @@
     $config['serverport'] = '9987'; //Instance port, (Default = 9987)
     $config['loginname'] = 'serveradmin'; //Query loginname
     $config['password'] = '******'; //Query password        
-    $config['displayname'] = "MxG Bot"; //Bot nickanme
+    $config['displayname'] = "Bot"; //Bot nickanme
 
     //General settings
     $config['send_enable'] = true; //send a message to client (can be true or false)
